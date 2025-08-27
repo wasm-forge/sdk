@@ -40,6 +40,7 @@ teardown() {
   assert_match "\[possible values.*motoko.*\]"
   assert_match "\[possible values.*rust.*\]"
   assert_match "\[possible values.*kybra.*\]"
+  assert_match "\[possible values.*rust-wasi.*\]"
   assert_match "\[possible values.*azle.*\]"
 }
 
@@ -48,6 +49,7 @@ teardown() {
   assert_match "\[possible values.*motoko.*\]"
   assert_match "\[possible values.*rust.*\]"
   assert_match "\[possible values.*kybra.*\]"
+  assert_match "\[possible values.*rust-wasi.*\]"
   assert_match "\[possible values.*azle.*\]"
 }
 
@@ -91,7 +93,7 @@ teardown() {
 }
 
 @test "backend templates" {
-  for backend in motoko rust kybra azle; do
+  for backend in motoko rust rust-wasi kybra azle; do
     assert_command dfx new e2e_$backend --type $backend --no-frontend
   done
 }

@@ -118,6 +118,7 @@ walrus = "0.21.1"
 which = "4.2.5"
 serde_dhall = { version = "0.12.1", default-features = false }
 toml = "0.8"
+wasi2ic = { git = "https://github.com/wasm-forge/wasi2ic.git", rev = "2fedbfaa404c1ccaab35484ff1fb392df62346ec" }
 
 [target.'cfg(windows)'.dependencies]
 junction = "1.0.0"

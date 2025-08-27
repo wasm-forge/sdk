@@ -255,6 +255,11 @@ fn add_assets(sources: Sources) {
         "assets/project_templates/rust",
     );
     add_assets_from_directory(
+        "new_project_rust_wasi_files",
+        &mut f,
+        "assets/project_templates/rust_wasi",
+    );
+    add_assets_from_directory(
         "new_project_base_files",
         &mut f,
         "assets/project_templates/base",

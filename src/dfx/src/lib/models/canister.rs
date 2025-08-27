@@ -150,6 +150,11 @@ impl Canister {
         let mut m = read_wasm_module(build_output_wasm_path)?;
         let mut modified = false;
 
+        // process polyfill for the WASI files
+        if wasi2ic::process_module(&mut m) {
+            modified = true;
+        }
+
         // optimize or shrink
         if let Some(level) = info.get_optimize() {
             trace!(logger, "Optimizing Wasm at level {}", level);

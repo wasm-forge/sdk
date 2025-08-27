@@ -63,6 +63,8 @@ impl CanisterBuilder for RustBuilder {
         let rust_info = canister_info.as_info::<RustCanisterInfo>()?;
         let package = rust_info.get_package();
 
+        let target = "wasm32-wasip1";
+
         let mut cargo = Command::new("cargo");
         cargo
             .stdout(Stdio::inherit())
@@ -70,7 +72,7 @@ impl CanisterBuilder for RustBuilder {
             .current_dir(canister_info.get_workspace_root())
             .arg("build")
             .arg("--target")
-            .arg("wasm32-unknown-unknown")
+            .arg(target)
             .arg("--release")
             .arg("-p")
             .arg(package)
@@ -92,8 +94,7 @@ impl CanisterBuilder for RustBuilder {
 
         info!(
             self.logger,
-            "Executing: cargo build --target wasm32-unknown-unknown --release -p {} --locked",
-            package
+            "Executing: cargo build --target {} --release -p {} --locked", target, package
         );
 
         let output = with_suspend_all_spinners(env, || {

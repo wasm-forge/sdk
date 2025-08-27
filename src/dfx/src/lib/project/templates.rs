@@ -38,6 +38,20 @@ pub fn builtin_templates() -> Vec<ProjectTemplate> {
         sort_order: 1,
     };
 
+    let rust_wasi = ProjectTemplate {
+        name: ProjectTemplateName("rust-wasi".to_string()),
+        display: "Rust (WASI)".to_string(),
+        resource_location: ResourceLocation::Bundled {
+            get_archive_fn: assets::new_project_rust_wasi_files,
+        },
+        category: ProjectTemplateCategory::Backend,
+        post_create: vec!["cargo update".to_string()],
+        post_create_failure_warning: Some(CARGO_UPDATE_FAILURE_MESSAGE.to_string()),
+        post_create_spinner_message: Some(CARGO_UPDATE_SPINNER_MESSAGE.to_string()),
+        requirements: vec![],
+        sort_order: 2,
+    };
+
     let azle = ProjectTemplate {
         name: ProjectTemplateName("azle".to_string()),
         display: "Typescript (Azle)".to_string(),
@@ -237,6 +251,7 @@ pub fn builtin_templates() -> Vec<ProjectTemplate> {
     vec![
         motoko,
         rust,
+        rust_wasi,
         azle,
         kybra,
         vanilla,

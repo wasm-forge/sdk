@@ -1,0 +1,18 @@
+[
+  {
+    "op": "add",
+    "path": "/canisters/__backend_name__",
+    "value": {
+      "build": "cargo build --target wasm32-wasip1 --release",
+      "wasm": "target/wasm32-wasip1/release/__backend_name__.wasm",
+      "type": "custom",
+      "package": "__backend_name__",
+      "candid": "src/__backend_name__/__backend_name__.did",
+      "metadata": [
+        {
+          "name": "candid:service"
+        }
+      ]
+    }
+  }
+]
